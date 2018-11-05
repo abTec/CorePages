@@ -1,3 +1,5 @@
+Nasadene tu: http://194.182.82.20/
+
 # Introduction 
 Pri rieseni som si dovolil pouzit postup odporucany MSDN a to je EF + Razor Pages. MVC vsetci notoricky pozname a nic nove zaujimave by sme tam neveli. Razor Pages mi pripominaju Component Based Architecture podobnu ako v Angular alebo React. Zaroven som sa vsak do tejto architektury snazil napchat nejaku ine patterny pre potreby "interview test" kodu. V povodnej architekture by som asi mal datacontext pouzivat priamo v kontrolke. Cisty cas prace (bohuzial iba len) 7 hodin. Tracking historie: GIT
 
