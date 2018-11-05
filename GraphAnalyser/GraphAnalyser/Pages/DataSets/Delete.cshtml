@@ -1,0 +1,46 @@
+﻿@page
+@model GraphAnalyser.Pages.DataSets.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>DataSet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DataSet.Hash)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataSet.Hash)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DataSet.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataSet.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DataSet.NumberOfUsers)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataSet.NumberOfUsers)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DataSet.InseretedDateUtc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataSet.InseretedDateUtc)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="DataSet.ID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

@@ -1,0 +1,43 @@
+﻿@page
+@model GraphAnalyser.Pages.DataSets.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DataSet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DataSet.Hash)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataSet.Hash)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DataSet.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataSet.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DataSet.NumberOfUsers)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataSet.NumberOfUsers)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DataSet.InseretedDateUtc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DataSet.InseretedDateUtc)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.DataSet.ID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
