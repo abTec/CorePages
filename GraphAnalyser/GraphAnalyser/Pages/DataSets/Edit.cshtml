@@ -16,7 +16,7 @@
             <input type="hidden" asp-for="DataSet.ID" />
             <div class="form-group">
                 <label asp-for="DataSet.Hash" class="control-label"></label>
-                <input asp-for="DataSet.Hash" class="form-control" />
+                <input asp-for="DataSet.Hash" class="form-control" readonly="readonly" />
                 <span asp-validation-for="DataSet.Hash" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -26,12 +26,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="DataSet.NumberOfUsers" class="control-label"></label>
-                <input asp-for="DataSet.NumberOfUsers" class="form-control" />
+                <input asp-for="DataSet.NumberOfUsers" class="form-control" readonly="readonly"/>
                 <span asp-validation-for="DataSet.NumberOfUsers" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DataSet.InseretedDateUtc" class="control-label"></label>
-                <input asp-for="DataSet.InseretedDateUtc" class="form-control" />
+                <input asp-for="DataSet.InseretedDateUtc" class="form-control" readonly="readonly" />
                 <span asp-validation-for="DataSet.InseretedDateUtc" class="text-danger"></span>
             </div>
             <div class="form-group">

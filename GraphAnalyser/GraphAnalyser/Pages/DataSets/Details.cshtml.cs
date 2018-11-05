@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Data;
@@ -25,6 +23,7 @@ namespace GraphAnalyser.Pages.DataSets
 
         public string JsonData { get; set; }
 
+        [Display(Name = "Average Number of Friends")]
         public int Average { get; set; }
 
         public DataSet DataSet { get; set; }
@@ -36,6 +35,7 @@ namespace GraphAnalyser.Pages.DataSets
                 return NotFound();
             }
 
+            // move to repo/service or should it be part of control in Razor Pages?
             DataSet = await _context.DataSet
                 .Include(ds => ds.Users)
                 .FirstOrDefaultAsync(m => m.ID == id);

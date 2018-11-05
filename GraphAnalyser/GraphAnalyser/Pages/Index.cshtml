@@ -55,42 +55,53 @@
     </a>
 </div>
 
+<div class="container">
+    <h3>Read me first please!</h3>
+    Pri rieseni som si dovolil pouzit postup odporucany MSDN a to je EF + Razor Pages. MVC vsetci notoricky pozname a nic
+    nove zaujimave by sme tam neveli. Razor Pages mi pripominaju Component Based Architecture podobnu ako v Angular alebo React.
+    Zaroven som sa vsak do tejto architektury snazil napchat nejaku ine patterny pre potreby "interview test" kodu. V povodnej architekture
+    by som asi mal datacontext pouzivat priamo v kontrolke. Cisty cas prace (bohuzial iba len) 7 hodin. Tracking historie: GIT 
+</div>
 <div class="row">
-    <div class="col-md-3">
-        <h2>Application uses</h2>
+    <div class="col-md-5">
+        <h2>Features</h2>
         <ul>
-            <li>Sample pages using ASP.NET Core Razor Pages</li>
-            <li>Theming using <a href="https://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
+            <li>Nacitanie suboru</li>
+            <li>Pocitanie hashu suboru a zakazanie pridania rovnakeho suboru</li>
+            <li>Ciastocna kontrola spravnosti formatu</li>
+            <li>Vytvorenie databazy</li>
+            <li>Analyza suboru - vytvorenie dat pre prechadzanie grafom</li>
+            <li>Zobrazenie statistik pre kazdy set</li>
+            <li>Nahodne generovanie mien pre ID userov</li>
+            <li>Vykreslenie kompletneho grafu</li>
+            <li>Klikatelne hrany vykreslia len susedov</li>
+            <li>JSON data ako reprezentacia grafu</li>
         </ul>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
         <h2>How to</h2>
         <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?linkid=852130">Working with Razor Pages.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699315">Manage User Secrets using Secret Manager.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699316">Use logging to log a message.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699317">Add packages using NuGet.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699319">Target development, staging or production environment.</a></li>
+            <li>Kedze su data sety readonly. Analyza poctu userov a dlzka ich friendlistu sa vyplni pred vloznim do db</li>
+            <li>Po vytvoreni noveho data setu je moznost menit jeho meno</li>
+            <li>Pri zobrazeni detailov sa vykresli kompletny graf</li>
+            <li>Jednotlive nodes su klikatelne, vykresli sa potom len strom daneho node</li>
+            <li>Do povodneho stavu sa graf uvedie klikom na Reset Graph</li>
+            <li>K dispozicii je struktura grafu v Json formate</li>
         </ul>
     </div>
     <div class="col-md-3">
-        <h2>Overview</h2>
+        <h2>Co by som vylepsil</h2>
         <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=518008">Conceptual overview of what is ASP.NET Core</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699320">Fundamentals of ASP.NET Core such as Startup and middleware.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=398602">Working with Data</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=398603">Security</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699321">Client side development</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699322">Develop on different platforms</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699323">Read more on the documentation site</a></li>
+            <li>Samotne spracovanie suboru mi pride tazkopadne</li>
+            <li>Chcel by som doriesit ulohu prechadzania grafom (do sirky)</li>
+            <li>Lepsie kreslenie velkych (1k+ nodes) grafov</li>
+            <li>Pouzite AutoMapper a oddelenie domenovych tried od clienta</li>
+            <li>Pouzite Moq v testoch</li>
+            <li>Vidite bug? <a href="mailto:andrej.beles@abtec.cz">andrej.beles@abtec.cz</a></li>
         </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Run &amp; Deploy</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=517851">Run your app</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=517853">Run tools such as EF migrations and more</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure App Service</a></li>
-        </ul>
+        <p><em>Moja celkova spokojnost s vysledkom</em></p>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 44%" aria-valuenow="44" aria-valuemin="0" aria-valuemax="100">44%</div>
+        </div>
     </div>
 </div>

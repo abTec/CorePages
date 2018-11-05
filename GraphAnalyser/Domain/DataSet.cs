@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Domain
 {
@@ -11,8 +12,10 @@ namespace Domain
 
         public string Name { get; set; }
 
+        [Display(Name = "Total Users")]
         public int NumberOfUsers { get; set; }
 
+        [Display(Name = "Created Date")]
         public DateTime InseretedDateUtc { get; set; }
 
         public ICollection<User> Users { get; set; }
