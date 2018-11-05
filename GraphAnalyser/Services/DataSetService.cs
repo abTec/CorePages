@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Data;
+using Newtonsoft.Json;
 using RandomNameGenerator;
 
 namespace Services
@@ -85,6 +86,21 @@ namespace Services
             }
         }
 
+        public async Task<string> DataSetToJson(DataSet dataSet)
+        {
+            var nodes = dataSet.Users.Select(u => new Node(u.Name, u.ID.ToString()));
+
+            var edges = await dataSetRepository.GetUserFriendship(dataSet.ID);
+            var edgesss = edges
+                    .Select(edge => new Edge(edge.UserID.ToString(), edge.FriendId.ToString()));
+            var graph = new Graph
+            {
+                Nodes = nodes.ToArray(),
+                Edges = edgesss.ToList()
+            };
+            return JsonConvert.SerializeObject(graph, Formatting.Indented);
+        }
+
         private User CreateUser(int userId)
             =>
                 new User
@@ -93,5 +109,51 @@ namespace Services
                     Name = NameGenerator.Generate(userId % 2 == 0 ? Gender.Male : Gender.Female),
                     Friends = new List<UserFriendship>()
                 };
+    }
+
+    public class Graph
+    {
+        public Graph()
+        {
+            Edges = new List<Edge>();
+        }
+        [JsonProperty("nodes")]
+        public Node[] Nodes { get; set; }
+        [JsonProperty("edges")]
+        public List<Edge> Edges { get; set; }
+    }
+
+    public class Node
+    {
+        public Node(string label, string id)
+        {
+            this.Label = label;
+            this.Id = id;
+        }
+        [JsonProperty("label")]
+        public string Label { get; set; }
+        [JsonProperty("id")]
+        public string Id { get; set; }
+        [JsonProperty("x")]
+        public int X { get; set; }
+        [JsonProperty("y")]
+        public int Y { get; set; }
+        [JsonProperty("size")] public int Size { get; set; } = 6;
+    }
+
+    public class Edge
+    {
+        public Edge(string source, string target)
+        {
+            Id = $"{source}.{target}";
+            Source = source;
+            Target = target;
+        }
+        [JsonProperty("source")]
+        public string Source { get; set; }
+        [JsonProperty("target")]
+        public string Target { get; set; }
+        [JsonProperty("id")]
+        public string Id { get; set; }
     }
 }

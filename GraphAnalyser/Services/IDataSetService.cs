@@ -10,5 +10,7 @@ namespace Services
     public interface IDataSetService
     {
         Task<DataSet> CreateDataSetAsync(Stream data);
+
+        Task<string> DataSetToJson(DataSet dataSet);
     }
 }

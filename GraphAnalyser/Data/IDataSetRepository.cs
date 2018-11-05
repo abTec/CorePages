@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Domain;
 
 namespace Data
@@ -8,5 +9,7 @@ namespace Data
         Task<DataSet> HashExists(string hash);
 
         Task<int> InsertDataSet(DataSet dataSet);
+
+        Task<IEnumerable<UserFriendship>> GetUserFriendship(int dataSetId);
     }
 }

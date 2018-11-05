@@ -35,9 +35,146 @@
         <dd>
             @Html.DisplayFor(model => model.DataSet.InseretedDateUtc)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Average)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Average)
+        </dd>
     </dl>
+    <div style="padding: 10px 0">
+        <a href="#" onclick="reset()">Reset Graph</a> |
+        <a asp-page="./Edit" asp-route-id="@Model.DataSet.ID">Edit</a> |
+        <a asp-page="./Index">Back to List</a>
+    </div>
+
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#collapse1">Json Data</a>
+                </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <pre>
+                    @Html.DisplayFor(model => model.JsonData)
+                </pre>
+                </div>
+                <div class="panel-footer">End of Json Data</div>
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.DataSet.ID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+
+
+<div id="container">
+    <style>
+        #graph-container {
+            height: 800px;
+            width: 100%;
+        }
+
+        #graph-container2 {
+            top: 20%;
+            bottom: 0;
+            left: 15px;
+            right: 15px;
+            position: absolute;
+        }
+    </style>
+    <div id="graph-container"></div>
 </div>
+<script>
+    sigma.classes.graph.addMethod('neighbors', function(nodeId) {
+        var k,
+            neighbors = {},
+            index = this.allNeighborsIndex[nodeId] || {};
+
+        for (k in index)
+            neighbors[k] = this.nodesIndex[k];
+
+        return neighbors;
+    });
+
+    var data = @Html.Raw(Model.JsonData);
+    var hideEges = false;
+    s = new sigma({
+        graph: data,
+        container: 'graph-container',
+        settings: {
+            defaultNodeColor: '#00af00',
+            defaultEdgeColor: '#4286f4',
+            minNodeSize: 3,
+            maxNodeSize: 6,
+            labelThreshold: 5
+        }
+    });
+    s.graph.nodes().forEach(function (node, i, a) {
+        node.originalColor = node.color;
+        if (a.length > 1000) {
+            s.settings('maxNodeSize', 3);
+            hideEges = true;
+        }
+        if (i === 0) {
+            node.x = 0;
+            node.y = 0;
+            return;
+        }
+        node.x = Math.random();
+        node.y = Math.random();
+        // node.x = Math.cos(Math.PI * 2 * i / a.length);
+        // node.y = Math.sin(Math.PI * 2 * i / a.length);
+        // node.x = Math.floor(Math.random() * window.innerWidth * 2);
+        // node.x = Math.min(window.innerWidth, i*90);
+        // node.y = Math.floor(Math.random() * window.innerHeight * 2) + 6;
+    });
+
+    s.graph.edges().forEach(function(e) {
+        e.originalColor = e.color;
+    });
+    s.refresh();
+
+    s.startForceAtlas2();
+    window.setTimeout(function () { s.killForceAtlas2() }, 100);
+
+    s.bind('clickNode', function(e) {
+        var nodeId = e.data.node.id,
+            toKeep = s.graph.neighbors(nodeId);
+        toKeep[nodeId] = e.data.node;
+
+        s.graph.nodes().forEach(function(n) {
+            if (toKeep[n.id]) {
+                n.color = n.originalColor;
+                n.hidden = false;
+            } else {
+                n.color = '#eee';
+                n.hidden = hideEges && true;
+            }
+        });
+
+        s.graph.edges().forEach(function(e) {
+            if (toKeep[e.source] && toKeep[e.target])
+                e.color = e.originalColor;
+            else
+                e.color = '#eee';
+        });
+
+        // Since the data has been modified, we need to
+        // call the refresh method to make the colors
+        // update effective.
+        s.refresh();
+    });
+    function reset() {
+        s.graph.nodes().forEach(function(n) {
+                n.color = n.originalColor;
+                n.hidden = false;
+
+        });
+        s.graph.edges().forEach(function(e) {
+                e.color = e.originalColor;
+        });
+        s.refresh();
+    }
+</script>
+
