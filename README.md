@@ -1,20 +1,30 @@
 # Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+Pri rieseni som si dovolil pouzit postup odporucany MSDN a to je EF + Razor Pages. MVC vsetci notoricky pozname a nic nove zaujimave by sme tam neveli. Razor Pages mi pripominaju Component Based Architecture podobnu ako v Angular alebo React. Zaroven som sa vsak do tejto architektury snazil napchat nejaku ine patterny pre potreby "interview test" kodu. V povodnej architekture by som asi mal datacontext pouzivat priamo v kontrolke. Cisty cas prace (bohuzial iba len) 7 hodin. Tracking historie: GIT
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+# Fetures
+Nacitanie suboru
+Pocitanie hashu suboru a zakazanie pridania rovnakeho suboru
+Ciastocna kontrola spravnosti formatu
+Vytvorenie databazy
+Analyza suboru - vytvorenie dat pre prechadzanie grafom
+Zobrazenie statistik pre kazdy set
+Nahodne generovanie mien pre ID userov
+Vykreslenie kompletneho grafu
+Klikatelne hrany vykreslia len susedov
+JSON data ako reprezentacia grafu
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+# How To
+Kedze su data sety readonly. Analyza poctu userov a dlzka ich friendlistu sa vyplni pred vloznim do db
+Po vytvoreni noveho data setu je moznost menit jeho meno
+Pri zobrazeni detailov sa vykresli kompletny graf
+Jednotlive nodes su klikatelne, vykresli sa potom len strom daneho node
+Do povodneho stavu sa graf uvedie klikom na Reset Graph
+K dispozicii je struktura grafu v Json formate
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
-
-If you want to learn more about creating good readme files then refer the following [guidelines](https://www.visualstudio.com/en-us/docs/git/create-a-readme). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+# Co by som vylepsil
+Samotne spracovanie suboru mi pride tazkopadne
+Pokrytie co najviac kodu testami
+Chcel by som doriesit ulohu prechadzania grafom (do sirky)
+Lepsie kreslenie velkych (1k+ nodes) grafov
+Pouzite AutoMapper a oddelenie domenovych tried od clienta
+Pouzite Moq v testoch
