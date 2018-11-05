@@ -1,5 +1,5 @@
 ﻿using System;
-using GraphAnalyser.Models;
+using Data;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;

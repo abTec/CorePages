@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Domain;
-using GraphAnalyser.Models;
 
 namespace GraphAnalyser.Pages.DataSets
 {
     public class EditModel : PageModel
     {
-        private readonly GraphAnalyser.Models.DataSetContext _context;
+        private readonly DataSetContext _context;
 
-        public EditModel(GraphAnalyser.Models.DataSetContext context)
+        public EditModel(DataSetContext context)
         {
             _context = context;
         }

@@ -11,27 +11,17 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="DataSet.Hash" class="control-label"></label>
-                <input asp-for="DataSet.Hash" class="form-control" />
-                <span asp-validation-for="DataSet.Hash" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <label asp-for="DataSet.Name" class="control-label"></label>
                 <input asp-for="DataSet.Name" class="form-control" />
                 <span asp-validation-for="DataSet.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DataSet.NumberOfUsers" class="control-label"></label>
-                <input asp-for="DataSet.NumberOfUsers" class="form-control" />
-                <span asp-validation-for="DataSet.NumberOfUsers" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DataSet.InseretedDateUtc" class="control-label"></label>
-                <input asp-for="DataSet.InseretedDateUtc" class="form-control" />
-                <span asp-validation-for="DataSet.InseretedDateUtc" class="text-danger"></span>
+                <label asp-for="InputFile" class="control-label"></label>
+                <input asp-for="InputFile" type="file" class="form-control" style="height:auto" />
+                <span asp-validation-for="InputFile" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
