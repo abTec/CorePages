@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Data
 {
-    public class DataSetRepository : IDataSetRepository
+    public class DataSetRepository : IDataSetRepository, IDisposable
     {
         private readonly DataSetContext context;
 
@@ -28,6 +28,10 @@ namespace Data
         }
 
         public async Task<IEnumerable<UserFriendship>> GetUserFriendship(int dataSetId) => await context.UserFriendship.Where(f => f.DataSetID == dataSetId).ToListAsync();
-        
+
+        public void Dispose()
+        {
+            context?.Dispose();
+        }
     }
 }
